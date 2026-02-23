@@ -12,25 +12,35 @@ class AuthController extends Controller
     {
         return view('login');
     }
-
+    
     public function login(Request $request)
     {
+        $request->validate([
+            'name' => 'required',
+            'password' => 'required',
+            'role' => 'required'
+        ]);
+
         $user = User::where('name', $request->name)
             ->where('role', $request->role)
             ->first();
 
-        if ($user && Hash::check($request->password, $user->password)) {
-            session(['user' => $user]);
-
-            if ($user->role === 'sales') {
-                return redirect('/sales');
-            } elseif ($user->role === 'admin') {
-                return redirect('/admin');
-            } elseif ($user->role === 'gudang') {
-                return redirect('/gudang');
-            }
+        if (!$user) {
+            return back()->with('error', 'User tidak ditemukan atau role salah.');
         }
 
-        return back()->with('error', 'Login gagal');
+        if (!Hash::check($request->password, $user->password)) {
+            return back()->with('error', 'Password salah.');
+        }
+
+        session(['user' => $user]);
+
+        if ($user->role === 'sales') {
+            return redirect('/sales');
+        } elseif ($user->role === 'admin') {
+            return redirect('/admin');
+        } else {
+            return redirect('/gudang');
+        }
     }
 }
