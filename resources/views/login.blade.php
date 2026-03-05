@@ -185,7 +185,7 @@ button:hover {
 
         <input type="hidden" id="roleInput" name="role" value="sales">
 
-        <div class="role-option sales active">Sales</div>
+        <div class="role-option sales">Sales</div>
         <div class="role-option admin">Admin</div>
         <div class="role-option gudang">Kepala Gudang</div>
 
@@ -230,7 +230,7 @@ roles.forEach(role => {
         } else if (role.classList.contains('admin')) {
             roleInput.value = 'admin';
         } else if (role.classList.contains('gudang')) {
-            roleInput.value = 'gudang';
+            roleInput.value = 'kepala_gudang';
         }
 
         console.log("Role dipilih:", roleInput.value);

@@ -37,7 +37,7 @@ class OrderController extends Controller
             'user_id' => session('user')->id,
             'payment_proof' => $filePath,
             'total' => $total,
-            'status' => 'Menunggu Konfirmasi'
+            'status' => 'pending    '
         ]);
 
         foreach ($request->items as $item) {
