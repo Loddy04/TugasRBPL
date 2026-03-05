@@ -44,7 +44,7 @@ class AdminOrderController extends Controller
 
         $order->save();
 
-        return response()->json(['success' => true]);
+        return redirect('/admin');
     }
 
 
@@ -56,6 +56,6 @@ class AdminOrderController extends Controller
 
         $order->save();
 
-        return response()->json(['success' => true]);
+        return redirect('/admin');
     }
 }

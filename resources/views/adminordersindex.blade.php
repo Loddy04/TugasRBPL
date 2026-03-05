@@ -160,14 +160,14 @@
             {{-- Tombol --}}
             <div class="buttons">
 
-                <form action="/admin/accept/{{ $order->id }}" method="POST" style="display:inline;">
+                <form action="/admin/orders/{{ $order->id }}/accept" method="POST" style="display:inline;">
                     @csrf
-                    <button class="accept">Terima</button>
+                    <button type="submit" class="accept">Terima</button>
                 </form>
 
-                <form action="/admin/reject/{{ $order->id }}" method="POST" style="display:inline;">
+                <form action="/admin/orders/{{ $order->id }}/reject" method="POST" style="display:inline;">
                     @csrf
-                    <button class="reject">Tolak</button>
+                    <button type="submit" class="reject">Tolak</button>
                 </form>
 
                 <form action="/admin/rekap/{{ $order->id }}" method="POST" style="display:inline;">
